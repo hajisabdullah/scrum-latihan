@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/base.html :: head(pageTitle='SITODO List')">
+</head>
+<body>
+<div class="container">
+    <header th:replace="fragments/base.html :: header">
+    </header>
+    <table id="id_list_table" class="table caption-top">
+        <caption class="display-1">Your Todo List</caption>
+        <thead class="table-dark">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Title</th>
+            <th scope="col">Status</th>
+            <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody th:if="${todoList}">
+        <tr th:object="${todoList}" th:each="item : ${todoList.items}">
+            <td th:text="${item.id}">1</td>
+            <td th:text="${item.title}">Cook rice</td>
+            <td th:text="${item.finished} ? 'Finished' : 'Not Finished'">Not Finished</td>
+            <td th:if="${item.finished}">
+                <a class="sitodo-finish-link" th:href="@{/list/{list_id}/update/{item_id}(list_id=${todoList.id},item_id=${item.id},finished='false')}">
+                    <span>Mark as 'Not Finished'</span>
+                </a>
+            </td>
+            <td th:unless="${item.finished}">
+                <a class="sitodo-finish-link" th:href="@{/list/{list_id}/update/{item_id}(list_id=${todoList.id},item_id=${item.id},finished='true')}">
+                    <span>Mark as 'Finished'</span>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+        <tbody th:unless="${todoList}">
+        <tr>
+            <td colspan="4">
+                <p>Your list is currently empty.</p>
+            </td>
+        </tr>
+        </tbody>
+        <tfoot th:if="${todoList}">
+        <tr>
+            <td colspan="4">
+                <p id="motivation_message" th:text="${motivationMessage}">A motivation message</p>
+            </td>
+        </tr>
+        </tfoot>
+    </table>
+    <form th:replace="fragments/list.html :: entry">
+    </form>
+    <p id="visitor_count" th:text="${visitorCount}">This page has been visited n times!</p>
+</div>
+<script th:replace="fragments/base.html :: script.bootstrap-js"></script>
+</body>
+</html>

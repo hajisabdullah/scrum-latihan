@@ -1,0 +1,19 @@
+---
+site_name: Sitodo
+site_url: https://sitodo-example.herokuapp.com
+theme:
+  name: readthedocs
+nav:
+  - Home:
+      - Course Overview: README.md
+  - Day One:
+      - Initialise Project: bootcamp/day-1/init-spring.md
+      - Hello, TDD: bootcamp/day-1/hello-tdd.md
+      - Deployment Automation: bootcamp/day-1/qa-automation.md
+      - Create a Basic Todo List: bootcamp/day-1/basic-list.md
+      - Recap: bootcamp/day-1/end-day-1.md
+  - Day Two:
+      - Test Automation: bootcamp/day-2/test-automation.md
+      - One-to-Many List: bootcamp/day-2/update-data-model.md
+      - Database Migration: bootcamp/day-2/database-migration.md
+      - Recap: bootcamp/day-2/end-day-2.md
