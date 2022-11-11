@@ -1,2 +1,2 @@
-# scrum-latihan
+# sitodo-telkomsat
 latihan1
